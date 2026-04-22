@@ -9,9 +9,9 @@
 #![allow(clippy::result_unit_err)] // We have nothing better to report
 
 pub type FieldOffset<T, U> = const_field_offset::FieldOffset<T, U, const_field_offset::AllowPin>;
-use crate::Property;
 use crate::items::PropertyAnimation;
 use crate::properties::InterpolatedPropertyValue;
+use crate::{Property, SharedString};
 use alloc::boxed::Box;
 use alloc::rc::Rc;
 use alloc::vec::Vec;
@@ -42,6 +42,7 @@ macro_rules! declare_ValueType_2 {
             crate::animations::EasingCurve,
             crate::items::StandardListViewItem,
             crate::items::TableColumn,
+            crate::items::DropOperations,
             crate::input::KeyEvent,
             crate::Brush,
             crate::graphics::Point,
@@ -52,11 +53,13 @@ macro_rules! declare_ValueType_2 {
             crate::lengths::LogicalSize,
             crate::lengths::LogicalEdges,
             crate::component_factory::ComponentFactory,
+            crate::AnyData,
             crate::api::LogicalPosition,
             crate::items::FontMetrics,
             crate::items::MenuEntry,
             crate::items::DropEvent,
             crate::model::ModelRc<crate::items::MenuEntry>,
+            crate::model::ModelRc<SharedString>,
             crate::styled_text::StyledText,
             crate::input::Keys,
             $(crate::items::$Name,)*
